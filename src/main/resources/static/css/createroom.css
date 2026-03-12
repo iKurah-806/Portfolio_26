@@ -1,0 +1,205 @@
+
+/* エラーメッセージのスタイル */
+.error {
+  margin: 30px auto 10px; /* 上部のマージンを30px、下部を10pxに設定し、左右を自動に設定 */
+  background-color: pink; /* 背景色をピンクに設定 */
+  color: red; /* テキストの色を赤に設定 */
+}
+/* チップ入力コンテナ*/
+#chipInputContainer {
+  min-height: 45px;
+  cursor: text;
+  padding: 4px 8px;
+  gap: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  background-color: #fff;
+}
+
+#chipInputContainer:focus-within {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* チップスタイル*/
+.chip {
+  background: #0d6efd;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.chip .chip-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  object-fit: cover;
+}
+
+.chip span {
+  margin-left: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0 4px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.chip span:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* プレースホルダー */
+#chipPlaceholder {
+  color: #6c757d;
+  font-size: 14px;
+  user-select: none;
+}
+
+/* 検索ボックス */
+#userSearchBox {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 14px;
+}
+
+#userSearchBox:focus {
+  outline: none;
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* ユーザーリストのスタイル */
+#userList {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-top: 10px;
+  padding: 8px;
+}
+
+/* ユーザーアイテム */
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.user-item:hover {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+  transform: translateX(4px);
+}
+
+.user-item.selected {
+  background-color: #cfe2ff;
+  border-color: #0d6efd;
+}
+
+/* ユーザーアバター */
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+  border: 2px solid #dee2e6;
+}
+
+.user-item.selected .user-avatar {
+  border-color: #0d6efd;
+}
+
+/* ユーザー情報 */
+.user-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #212529;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.user-email {
+  font-size: 13px;
+  color: #6c757d;
+}
+
+/* 選択インジケーター */
+.user-check {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #dee2e6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.user-item.selected .user-check {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.user-check::after {
+  content: '✓';
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  display: none;
+}
+
+.user-item.selected .user-check::after {
+  display: block;
+}
+
+/* 空の状態 */
+.user-list-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6c757d;
+}
+
+/* スクロールバーのカスタマイズ */
+#userList::-webkit-scrollbar {
+  width: 8px;
+}
+
+#userList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#userList::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+#userList::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}

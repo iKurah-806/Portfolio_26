@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Swack - 新規登録画面</title>
+
+    <link rel="icon" href="../static/images/favicon.ico" th:href="@{/images/favicon.ico}" />
+
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="../static/css/signup.css" th:href="@{/css/signup.css}" />
+  </head>
+
+  <body id="body">
+    <div class="container">
+      <h1>Swack</h1>
+      <h2>新規登録</h2>
+      <p id="errorMsg" class="error" th:text="${errorMsg}">#errorMsg</p>
+      <div class="card">
+        <form id="loginForm" th:action="@{/signup/post}" method="post">
+          <h3>Swackワークスペースに参加する</h3>
+          <h5>氏名、メールアドレス、パスワードを入力してください</h5>
+          <input type="text" id="username" name="username" placeholder="氏名" />
+          <input type="email" id="mailAddress" name="mailAddress" placeholder="xxxxxx@xxx.xxx" />
+          <input type="password" id="password" name="password" placeholder="パスワード" />
+          <input type="submit" value="参加する" />
+        </form>
+      </div>
+
+      <a href="/login">&gt;&gt; ログイン画面へ</a>
+    </div>
+    <!-- container -->
+  </body>
+
+</html>

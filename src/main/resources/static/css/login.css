@@ -1,0 +1,65 @@
+@charset "UTF-8";
+
+/* login.htmlのスタイリング */
+
+/* コンテナのスタイル設定 */
+.container {
+  width: 90%; /* コンテナの幅を親要素の90%に設定 */
+  max-width: 500px; /* 最大幅を500pxに制限 */
+  height: 100%; /* 高さを親要素と同じに設定 */
+  margin: auto; /* 上下左右のマージンを自動で均等に設定（中央寄せ） */
+}
+/* コンテナ内のh1およびh2要素のスタイル */
+.container h1, h2 {
+  margin-top: 30px; /* 上部のマージンを30pxに設定 */
+  text-align: center; /* テキストを中央揃えに設定 */
+}
+
+
+/* エラーメッセージのスタイル */
+.error {
+  margin: 30px auto 10px; /* 上部のマージンを30px、下部を10pxに設定し、左右を自動に設定 */
+  background-color: pink; /* 背景色をピンクに設定 */
+  color: red; /* テキストの色を赤に設定 */
+}
+
+
+/* カードのスタイル */
+.card {
+  margin: 0px auto 30px; /* 上部のマージンを0px、下部を30pxに設定し、左右を自動に設定 */
+  width: 90%; /* 幅を親要素の90%に設定 */
+  padding: 20px; /* 内側の余白を20pxに設定 */
+  background-color: #efefef; /* 背景色を薄灰色に設定 */
+  border-radius: 5px; /* 境界線の角を丸める */
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3); /* 影を付ける */
+  text-align: acenter; /* テキストを中央揃えに設定 */
+}
+
+/* カード内のinput要素のスタイル */
+.card input {
+  margin: 5px auto; /* 上下左右のマージンを5pxに設定 */
+  padding: 5px; /* 内側の余白を5pxに設定 */
+  width: 100%; /* 幅を100%に設定 */
+  border: none; /* 境界線を削除 */
+}
+
+/* カード内のsubmitタイプのinput要素のスタイル */
+.card input[type="submit"] {
+  margin-top: 20px; /* 上部のマージンを20pxに設定 */
+  background-color: purple; /* 背景色を紫に設定 */
+  color: white; /* テキストの色を白に設定 */
+}
+
+/* カード内のcheckboxタイプのinput要素のスタイル */
+.card input[type="checkbox"] {
+  width: auto; /* 幅を自動に設定 */
+  float: left; /* 左寄せに設定 */
+}
+
+/* カード内のspan要素のスタイル */
+.card span {
+  float: left; /* 左寄せに設定 */
+  margin-top: 1px; /* 上部のマージンを1pxに設定 */
+  margin-left: 5px; /* 左部のマージンを5pxに設定 */
+  font-size: 0.9em; /* フォントサイズを0.9emに設定 */
+}

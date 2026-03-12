@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Swack - ルーム作成画面</title>
+
+    <link rel="icon" href="../static/images/favicon.ico" th:href="@{/images/favicon.ico}" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="../static/css/style.css" th:href="@{/css/style.css}" />
+    <link rel="stylesheet" href="../static/css/createroom.css" th:href="@{/css/createroom.css}" />
+
+    </head>
+
+  <body th:data-user-id="${user.userId}">
+    <div id="loading">
+      <div class="loader"></div>
+    </div>
+    <div class="container w-90 h-100" style="max-width: 500px">
+      <h2 id="pageTitle" class="fw-bold mt-4">ルームを作成する</h2>
+      <p>
+        ルームとはメンバーがコミュニケーションを取る場所です。特定のトピックに基づいてルームを作ると良いでしょう
+        (例: #営業)。
+      </p>
+
+      <form id="addMember_form" method="post">
+        <div class="form-check form-switch mt-4">
+          <input type="checkbox" id="chk" name="privated" class="form-check-input" />
+          <label class="fw-bolder fs-5 lh-1 d-block"
+            ><span id="check_label">パブリック</span></label
+          >
+          <p id="check_text" class="mt-2">
+            このルームは、ワークスペースのメンバーであれば誰でも閲覧・参加することができます。
+          </p>
+        </div>
+
+        <p th:if="${errorMsg}" class="error" th:text="${errorMsg}">#errorMessage</p>
+
+        <div class="form-group">
+          <label class="form-label">名前</label>
+          <input
+            type="text"
+            id="name"
+            name="roomName"
+            class="form-control"
+            placeholder="# 例:営業"
+            maxlength="50"
+            autofocus
+          />
+          <span class="text-secondary ms-2">ルームの名前を入力してください。</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">ユーザ招待</label>
+
+          <!-- 入力とチップを一体化するコンテナ -->
+          <div id="chipInputContainer" class="form-control d-flex flex-wrap align-items-center">
+            <!-- チップはここに JS が追加 -->
+
+            <input
+              type="text"
+              id="userNameInput"
+              class="border-0 flex-grow-1"
+              style="min-width:150px; outline: none;"
+              placeholder="ユーザー名を入力"
+              maxlength="50"
+            />
+          </div>
+
+          <span class="text-secondary ms-2">招待するユーザの名前を入力してください</span>
+        </div>
+
+        <!-- ユーザ一覧（クリックで選択） -->
+        <div id="userList">
+          <div th:each="oneUser : ${userList}" class="user-item">
+
+            <img
+              class="user-avatar"
+              th:src="${oneUser.userImgPath}"
+              onerror="this.src='/images/profile/profile.png';"
+              alt="User Avatar"
+            />
+
+            <div class="user-info">
+              <span th:if="${oneUser.userId != user.userId}" class="user-name" th:text="${oneUser.mailAddress}">User Name</span>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="float-end mt-3">
+          <a class="text-decoration-none" href="/">
+            <input type="button" class="btn btn-default" value="キャンセル" />
+          </a>
+          <button id="send" class="btn btn-success" disabled>ルームを作成する</button>
+        </div>
+      </form>
+    </div>
+    <!-- container -->
+
+    <!-- CDN : Bootstrap Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="../static/js/createroom.js" th:src="@{/js/createroom.js}"></script>
+    <script src="../static/js/loading.js" th:src="@{/js/loading.js}"></script>
+
+  </body>
+</html>

@@ -1,0 +1,624 @@
+﻿@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  width: 100vw;
+  height: 100vh;
+  font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, sans-serif;
+}
+
+
+:root {
+  /* --- A. メイン画面 (ライトモード) --- */
+  --bg-body: #FFFFFF;              /* 全体の背景 */
+  --bg-secondary: #f8f9fa;         /* 補足的な背景 */
+  --bg-hover: #f1f2f4;             /* ホバー時の背景 */
+  --text-main: #212529;            /* メイン文字色 */
+  --text-sub: #6c757d;             /* 薄い文字色 */
+  --border-color: #dee2e6;         /* 枠線の色 */
+  --input-bg: #FFFFFF;             /* 入力フォーム背景 */
+  --link-color: #0d6efd;           /* リンク色 */
+  --overlay-bg: rgba(0, 0, 0, 0.5);
+
+  /* --- B. サイドバー & ヘッダー  --- */
+  --sidebar-bg: #3F0E40;
+  --header-bg: #350D36;
+  --sidebar-text: #cfc3cf;
+  --sidebar-hover: rgba(255, 255, 255, 0.1);
+  --sidebar-active-bg: #1164A3;
+  --sidebar-active-text: #ffffff;
+
+
+  --btn-close-filter: none;
+  --icon-filter: none;
+}
+
+/* --- ダークモード設定 [data-mode="dark"] --- */
+[data-mode="dark"] {
+  --bg-body: #1a1d21;
+  --bg-secondary: #222529;
+  --bg-hover: #2c3036;
+  --text-main: #d1d2d3;
+  --text-sub: #ababad;
+  --border-color: #565856;
+  --input-bg: #2b3035;
+  --link-color: #6c9cff;
+
+  /* アイコン等を白く反転 */
+  --btn-close-filter: invert(1) grayscale(100%) brightness(200%);
+  --icon-filter: invert(1) grayscale(100%) brightness(200%);
+}
+
+/* --- 単色系 --- */
+
+/* 青 */
+[data-theme="ocean"] {
+  --sidebar-bg: #1264a3;
+  --header-bg: #0f548a;
+  --sidebar-text: #e8f0f5;
+  --sidebar-active-bg: #0b4c7d;
+  --sidebar-active-text: #ffffff;
+}
+
+/* 緑 */
+[data-theme="forest"] {
+  --sidebar-bg: #2e7d32;
+  --header-bg: #256428;
+  --sidebar-text: #e8f5e9;
+  --sidebar-active-bg: #1b5e20;
+  --sidebar-active-text: #ffffff;
+}
+
+/* 茶 */
+[data-theme="choco"] {
+  --sidebar-bg: #4e342e;
+  --header-bg: #3e2b26;
+  --sidebar-text: #efebe9;
+  --sidebar-active-bg: #3e2723;
+  --sidebar-active-text: #ffccbc;
+}
+
+/* モノ */
+[data-theme="mono"] {
+  --sidebar-bg: #1e1e1e;
+  --header-bg: #000000;
+  --sidebar-text: #cccccc;
+  --sidebar-active-bg: #333333;
+  --sidebar-active-text: #ffffff;
+}
+
+/* オレンジ */
+[data-theme="pumpkin"] {
+  --sidebar-bg: #d35400;
+  --header-bg: #a04000;
+  --sidebar-text: #fceddf;
+  --sidebar-active-bg: #e67e22;
+  --sidebar-active-text: #ffffff;
+}
+
+/* 赤 */
+[data-theme="rouge"] {
+  --sidebar-bg: #c0392b;
+  --header-bg: #922b21;
+  --sidebar-text: #fadbd8;
+  --sidebar-active-bg: #e74c3c;
+  --sidebar-active-text: #ffffff;
+}
+
+/* ロイヤル */
+[data-theme="royal"] {
+  --sidebar-bg: #4b0082;
+  --header-bg: #300052;
+  --sidebar-text: #e8daef;
+  --sidebar-active-bg: #8e44ad;
+  --sidebar-active-text: #ffffff;
+}
+
+/* --- グラデーション系 --- */
+
+/* サンセット */
+[data-theme="sunset"] {
+  --sidebar-bg: linear-gradient(135deg, #f5af19, #f12711);
+  --header-bg: #f12711;
+  --sidebar-text: #ffffff;
+  --sidebar-hover: rgba(255, 255, 255, 0.2);
+  --sidebar-active-bg: rgba(255, 255, 255, 0.3);
+  --sidebar-active-text: #ffffff;
+}
+
+/* オーロラ */
+[data-theme="aurora"] {
+  --sidebar-bg: linear-gradient(135deg, #11998e, #38ef7d);
+  --header-bg: #11998e;
+  --sidebar-text: #ffffff;
+  --sidebar-hover: rgba(255, 255, 255, 0.2);
+  --sidebar-active-bg: rgba(0, 0, 0, 0.2);
+  --sidebar-active-text: #ffffff;
+}
+
+/* ベリー */
+[data-theme="berry"] {
+  --sidebar-bg: linear-gradient(135deg, #8E2DE2, #4A00E0);
+  --header-bg: #4A00E0;
+  --sidebar-text: #e0e0e0;
+  --sidebar-hover: rgba(255, 255, 255, 0.15);
+  --sidebar-active-bg: rgba(0, 0, 0, 0.3);
+  --sidebar-active-text: #ffffff;
+}
+
+/* パステル */
+[data-theme="pastel"] {
+  --sidebar-bg: linear-gradient(135deg, #E55D87, #5FC3E4);
+  --header-bg: #E55D87;
+  --sidebar-text: #ffffff;
+  --sidebar-hover: rgba(255, 255, 255, 0.25);
+  --sidebar-active-bg: rgba(255, 255, 255, 0.4);
+  --sidebar-active-text: #ffffff;
+}
+
+[data-theme="spurs"] {
+  --sidebar-bg: linear-gradient(135deg, #132257, #051030);
+  --header-bg: #132257;
+  --sidebar-text: #ffffff;
+  --sidebar-hover: rgba(255, 255, 255, 0.15);
+  --sidebar-active-bg: #ffffff;
+  --sidebar-active-text: #132257;
+}
+
+/* --- 全体ベース --- */
+body {
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* --- サイドバー (.left) --- */
+.left {
+
+  background: var(--sidebar-bg) !important;
+  color: var(--sidebar-text) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+/* サイドバー内のテキスト色 */
+.left h2,
+.left a,
+.left summary {
+  color: var(--sidebar-text) !important;
+}
+
+/* ボタン色補正 (ボタン文字を黒にする) */
+.left button:not(.btn) {
+  color: var(--sidebar-text) !important;
+}
+.left .btn-light, .left .btn-warning {
+  color: #212529 !important;
+}
+
+/* リスト項目 */
+.left .list-item:hover,
+.left summary:hover {
+  background-color: var(--sidebar-hover);
+  cursor: pointer;
+}
+.left .list-item.active {
+  background-color: var(--sidebar-active-bg) !important;
+  color: var(--sidebar-active-text) !important;
+}
+
+/* --- ヘッダー --- */
+.header {
+  background: var(--header-bg) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--sidebar-text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  z-index: 10;
+}
+.header span {
+  color: var(--sidebar-text) !important;
+}
+.header .dropdown-toggle {
+  color: var(--sidebar-text) !important;
+}
+
+/* --- メインコンテンツエリア --- */
+.contents {
+  background-color: var(--bg-body) !important;
+  color: var(--text-main);
+}
+
+.contents h2 {
+  background-color: var(--bg-body) !important;
+  color: var(--text-main) !important;
+  border-bottom: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+}
+/* ダークモードでアイコン反転 */
+.contents h2 img {
+  filter: var(--icon-filter);
+}
+
+.contents-main {
+  background-color: var(--bg-body) !important;
+  color: var(--text-main) !important;
+  scrollbar-width: thin;
+  scrollbar-color: var(--text-sub) var(--bg-body);
+}
+
+/* --- ログボックス --- */
+.log-box {
+  background-color: var(--bg-secondary);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+[data-mode="dark"] .log-box {
+  background-color: var(--bg-body) !important;
+  border-color: var(--border-color) !important;
+  color: var(--text-main) !important;
+}
+
+.log-name { color: var(--text-main) !important; }
+.log-time { color: var(--text-sub) !important; }
+
+.log-area:hover {
+  background-color: var(--bg-hover) !important;
+}
+
+/* --- フッター --- */
+.contents-footer {
+  background-color: var(--bg-secondary) !important;
+  border-top: 1px solid var(--border-color);
+}
+[data-mode="dark"] .contents-footer {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* --- ドロワーメニュー --- */
+.drawer-menu {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-main) !important;
+  border-left: 1px solid var(--border-color);
+  box-shadow: -2px 0 10px rgba(0,0,0,0.2);
+}
+.drawer-content {
+  background-color: var(--bg-secondary) !important;
+}
+.drawer-header {
+  background-color: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-main) !important;
+}
+.drawer-overlay {
+  background-color: var(--overlay-bg);
+}
+.profile-field {
+  background-color: var(--bg-body) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+}
+.profile-field label {
+  color: var(--text-sub) !important;
+}
+.profile-value span {
+  color: var(--text-main) !important;
+}
+
+/* --- フォーム要素 --- */
+.contents-footer input[type="text"]#message,
+.form-control,
+#chipInputContainer,
+input[type="text"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+  background-color: var(--input-bg) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color) !important;
+}
+::placeholder {
+  color: var(--text-sub) !important;
+  opacity: 0.7;
+}
+
+/* --- モーダル & リスト --- */
+.modal-content {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-main) !important;
+  border: 1px solid var(--border-color);
+}
+.modal-header, .modal-footer {
+  border-color: var(--border-color) !important;
+}
+.btn-close {
+  filter: var(--btn-close-filter);
+}
+
+/* ドロップダウン */
+.dropdown-menu,
+.dropdown-menu-content,
+.dropdown-submenu-content {
+  background-color: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color);
+  color: var(--text-main) !important;
+}
+
+.dropdown-item {
+  color: var(--text-main) !important;
+}
+.dropdown-item:hover {
+  background-color: var(--border-color);
+  color: var(--text-main);
+}
+
+.list-group-item {
+  background-color: var(--bg-secondary) !important;
+  color: var(--text-main) !important;
+  border-color: var(--border-color) !important;
+}
+#userList {
+  background-color: var(--input-bg) !important;
+  border-color: var(--border-color);
+}
+.user-item:hover {
+  background-color: var(--bg-hover) !important;
+}
+.user-name {
+  color: var(--text-main) !important;
+}
+
+hr {
+  border-color: var(--border-color);
+  opacity: 0.3;
+}
+
+/* --- 画像関連 --- */
+.profile-icon {
+  object-fit: contain;
+  object-position: center;
+  background-color: #000;
+}
+.user-avatar {
+  object-fit: cover;
+}
+
+/* --- ボタン --- */
+.btn-light, .btn-warning, .btn-default {
+    color: #212529 !important;
+}
+[data-mode="dark"] .btn-light:not(.left .btn-light),
+[data-mode="dark"] .btn-secondary:not(.dropdown-toggle) {
+  background-color: #3a3f45;
+  border-color: #495057;
+  color: #ffffff !important;
+}
+[data-mode="dark"] .btn-light:hover {
+  background-color: #464c53;
+}
+
+.theme-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.theme-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-body);
+  border: 1px solid var(--border-color);
+  color: var(--text-main) !important;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.theme-btn:hover {
+  background-color: var(--bg-hover);
+}
+.theme-btn.active-theme {
+  border-color: var(--sidebar-active-bg);
+  background-color: var(--bg-hover);
+  font-weight: bold;
+  box-shadow: 0 0 0 1px var(--sidebar-active-bg);
+}
+.theme-preview {
+  display: block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  border: 1px solid rgba(0,0,0,0.1);
+}
+
+.btn-success {
+  background-color: green;
+  color: white !important;
+}
+.btn-success:disabled {
+  background-color: gray;
+  color: white !important;
+}
+
+#loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #731f66;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+#loading.loaded {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.loading-overlay {
+  background: var(--bg-body);
+}
+.spinner {
+  border: 6px solid var(--border-color);
+  border-top-color: var(--link-color);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 10px auto;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader {
+  color: #ffffff;
+  font-size: 20px;
+  margin: 100px auto;
+  width: 1em;
+  height: 1em;
+  border-radius: 50%;
+  position: relative;
+  text-indent: -9999em;
+  animation: load4 1.3s infinite linear;
+  transform: translateZ(0);
+}
+@keyframes load4 {
+  0%, 100% { box-shadow: 0 -3em 0 0.2em, 2em -2em 0 0em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 0; }
+  12.5% { box-shadow: 0 -3em 0 0, 2em -2em 0 0.2em, 3em 0 0 0, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em; }
+  25% { box-shadow: 0 -3em 0 -0.5em, 2em -2em 0 0, 3em 0 0 0.2em, 2em 2em 0 0, 0 3em 0 -1em, -2em 2em 0 -1em, -3em 0 0 -1em, -2em -2em 0 -1em; }
+  37.5% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 0, 2em 2em 0 0.2em, 0 3em 0 0em, -2em 2em 0 -1em, -3em 0em 0 -1em, -2em -2em 0 -1em; }
+  50% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 0em, 0 3em 0 0.2em, -2em 2em 0 0, -3em 0em 0 -1em, -2em -2em 0 -1em; }
+  62.5% { box-shadow: 0 -3em 0 -1em, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 0, -2em 2em 0 0.2em, -3em 0 0 0, -2em -2em 0 -1em; }
+  75% { box-shadow: 0em -3em 0 -1em, 2em -2em 0 -1em, 3em 0em 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0.2em, -2em -2em 0 0; }
+  87.5% { box-shadow: 0em -3em 0 0, 2em -2em 0 -1em, 3em 0 0 -1em, 2em 2em 0 -1em, 0 3em 0 -1em, -2em 2em 0 0, -3em 0em 0 0, -2em -2em 0 0.2em; }
+}
+
+/* レインボー */
+@keyframes rainbow-shift {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+[data-theme="rainbow"] .left,
+[data-theme="rainbow"] .header {
+  position: relative;
+  background: none !important;
+  border-color: rgba(255, 255, 255, 0.3) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="rainbow"] .header {
+  z-index: 1001 !important;
+}
+[data-theme="rainbow"] .left {
+  z-index: 1000 !important;
+}
+
+
+[data-theme="rainbow"] .left::before,
+[data-theme="rainbow"] .header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* 文字の後ろ */
+
+  background-image: linear-gradient(
+    135deg,
+    #ff0000, #ff8000, #ffff00, #00ff00,
+    #00ffff, #0000ff, #8000ff
+  ) !important;
+
+  background-attachment: fixed !important;
+  background-size: 150% 150% !important;
+  animation: rainbow-shift 5s linear infinite;
+}
+
+/* ヘッダー・サイドバーの文字色 (白文字・影付き) */
+[data-theme="rainbow"] .left *,
+[data-theme="rainbow"] .header * {
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+[data-theme="rainbow"] .dropdown-menu {
+  z-index: 9999 !important;
+}
+
+
+[data-theme="rainbow"] .dropdown-menu * {
+  text-shadow: none !important;
+}
+
+[data-theme="rainbow"] .btn-light {
+  background-color: rgba(255,255,255,0.2) !important;
+  border: 1px solid rgba(255,255,255,0.6) !important;
+  color: #fff !important;
+}
+
+
+/* --- サイドバー動かすやつ黒固定 --- */
+.resizer {
+  width: 6px;
+  background-color: #222222 !important;
+  cursor: col-resize;
+  z-index: 100;
+  flex-shrink: 0;
+  border-left: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ホバー時 少し明るくする */
+.resizer:hover {
+  background-color: #555555 !important;
+  transition: background-color 0.2s;
+}
+
+/* --- ここから修正追記部分 --- */
+
+/* ドロップダウンのトグルボタン */
+.dropdown-menu .dropdown-toggle {
+  color: var(--text-main) !important;
+}
+
+/* ドロップダウン内のアイテム全般 */
+.dropdown-menu .dropdown-item,
+.dropdown-menu a,
+.dropdown-menu button,
+.dropdown-menu input,
+.dropdown-menu span {
+  color: var(--text-main) !important;
+  text-shadow: none !important;
+  background: transparent;
+}
+
+/* ホバー時の設定 */
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu a:hover,
+.dropdown-menu button:hover,
+.dropdown-menu input:hover {
+  color: var(--text-main) !important;
+  background-color: var(--border-color) !important;
+}
+
+/* ユーザアイコン反転させないよ～ん */
+.contents h2 .dropdown-menu img {
+  filter: none !important;
+}

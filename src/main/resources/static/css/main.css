@@ -1,0 +1,842 @@
+﻿@charset "UTF-8";
+html, body{
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+/* mainページのスタイリング */
+.container {
+  width: 100%; /* 幅をビューポートの100%に設定 */
+  max-width: 100%; /* 最大幅もビューポートの100%に設定 */
+  height: 100%; /* 高さをビューポートの100%に設定 */
+  padding: 0; /* 内側の余白をゼロに設定 */
+  display: flex;
+  justify-content: flex-start;  /* 横方向：左から順に配置 */
+  align-items: stretch;
+}
+
+/* ヘッダー部分のスタイリング */
+.header {
+  display: flex; /* フレックスボックスモデルを使用 */
+  justify-content: space-between; /* 子要素を両端に配置 */
+  align-items: center; /* 子要素を中央揃え */
+  width: 100%; /* 幅を100%に設定 */
+  height: 40px; /* 高さを40pxに設定 */
+  padding: 0 5px; /* 左右の内側の余白を5pxに設定 */
+  background-color: rgb(59, 13, 62); /* 背景色を濃い紫に設定 */
+  color: white; /* テキストの色を白に設定 */
+}
+
+/* メインコンテンツ部分のスタイリング */
+.main {
+  flex: 1;
+  display: flex; /* フレックスボックスモデルを使用 */
+  /*width: 100%;*/ /* 幅を100%に設定 */
+  height: calc(100% - 40px); /* 高さをヘッダーを除いた残りに設定 */
+  min-width: 0;
+}
+/* メインコンテンツ内のhr要素のスタイリング */
+.main hr {
+  margin: 0; /* マージンをゼロに設定 */
+}
+/* 左側メニュー部分のスタイリング */
+.left {
+  overflow: auto; /* 内容がオーバーフローしたらスクロールバー表示 */
+  width: 240px; /* 幅を240pxに設定 */
+  max-width: 540px;
+  min-width: 180px;
+  height: 100%; /* 高さを100%に設定 */
+  background-color: #611d57; /* 背景色を設定 */
+  color: white; /* テキストの色を白に設定 */
+  transition: width 0.1s ease;
+}
+/* 左側メニュー内のh2要素のスタイリング */
+.left h2 {
+  padding-left: 5px; /* 左側の内側の余白を5pxに設定 */
+}
+
+/* 左側メニュー内のdetails要素のスタイリング */
+.left details {
+  margin-left: 5px; /* 左側のマージンを5pxに設定 */
+  margin-top: 10px; /* 上側のマージンを10pxに設定 */
+}
+/* 左側メニュー内のリスト名のスタイリング */
+.left .list-name {
+  margin-left: 15px; /* 左側のマージンを15pxに設定 */
+  text-decoration: none; /* テキストの装飾をなしに設定 */
+  color: white; /* テキストの色を白に設定 */
+
+}
+
+.left .list-item {
+  white-space: nowrap;       /* 折り返さない */
+  overflow: hidden;          /* はみ出しを隠す */
+  text-overflow: ellipsis;   /* はみ出したら「...」 */
+  display: block;
+}
+
+.resizer {
+  width: 5px;
+  cursor: col-resize;
+  background-color: #515151;
+}
+
+
+/* メインコンテンツエリアのスタイリング */
+.contents {
+  flex: 1; /* フレックスアイテムとして残りのスペースを占有 */
+  position: relative; /* 位置指定の基準点を設定 */
+  background-color: white; /* 背景色を白に設定 */
+  color: black; /* テキストの色を黒に設定 */
+}
+/* メインコンテンツ内のメンバー追加ボタンのスタイリング */
+.contents .join-member-button {
+  position: absolute; /* 絶対位置指定 */
+  top: 5px; /* 上から5pxの位置 */
+  right: 5px; /* 右から5pxの位置 */
+}
+/* メインコンテンツ内のh2要素のスタイリング */
+.contents h2 {
+  padding-left: 5px; /* 左側の内側の余白を5pxに設定 */
+}
+/* メインコンテンツ内のメインエリアのスタイリング */
+.contents-main {
+  overflow: auto; /* 内容がオーバーフローしたらスクロールバー表示 */
+  height: calc(100% - 110px); /* 高さをヘッダーとフッターを除いた残りに設定 */
+}
+/* メインコンテンツ内のログエリアのスタイリング */
+.contents-main .log-area {
+  display: flex; /* フレックスボックスモデルを使用 */
+}
+/* メインコンテンツ内のログエリアのp要素のスタイリング */
+.contents-main .log-area p {
+  margin-bottom: 0; /* 下側のマージンをゼロに設定 */
+}
+
+/* メインコンテンツ内のログアイコンのスタイリング */
+.contents-main .log-icon {
+  margin-top: 10px; /* 上側のマージンを10pxに設定 */
+  margin-left: 5px; /* 左側のマージンを5pxに設定 */
+}
+
+
+/* メインコンテンツ内のログアイコン内のimg要素のスタイリング */
+.contents-main .log-icon img {
+  background-color: black;
+  width: 60px;
+  height: 60px;
+}
+
+
+/* メインコンテンツ内のログボックスのスタイリング */
+.contents-main .log-box {
+  position: relative;
+  flex: 1; /* フレックスアイテムとして残りのスペースを占有 */
+  margin: 5px; /* すべての側のマージンを5pxに設定 */
+  padding: 5px; /* すべての側の内側の余白を5pxに設定 */
+  border-radius: 5px; /* 角を丸める */
+  background-color: #efefef; /* 背景色を設定 */
+}
+/* メインコンテンツ内のログボックスヘッダーのスタイリング */
+.contents-main .log-box-header {
+  display: flex; /* フレックスボックスモデルを使用 */
+  justify-content: space-between; /* 子要素を両端に配置 */
+}
+/* メインコンテンツ内のログ名のスタイリング */
+.contents-main .log-name {
+  font-weight: bold; /* フォントを太字に設定 */
+}
+/* メインコンテンツ内のログ時間のスタイリング */
+.contents-main .log-time {
+  font-size: 0.8rem; /* フォントサイズを0.8remに設定 */
+  opacity: 0.5; /* 不透明度を50%に設定 */
+}
+
+/* フロートボタンのスタイル */
+.log-box-float-button {
+  border: none; /* ボタンの枠線を無くす */
+}
+/* フロートボタン内の画像に適用するスタイル */
+.log-box-float-button img {
+  width: 20px; /* 画像の幅を20pxに設定 */
+  height: 20px; /* 画像の高さを20pxに設定 */
+}
+
+.log-box-float {
+  display: none;
+  position: absolute;
+  top: -10px; /* エリアの上に表示 */
+  right: 20px; /* エリアの右に表示 */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 影を追加 */
+  z-index: 1; /* 他の要素の上に表示 */
+}
+
+/* ログボックスのヘッダーにマウスがホバーされた時の動作 */
+.log-box-header:hover .log-box-float {
+  display: block; /* フロート要素を表示 */
+}
+/* ログボックス内のフロート要素に含まれるspanタグのスタイル */
+.log-box-float span {
+  margin: 0 5px; /* 左右のマージンを5pxに設定 */
+  cursor: pointer; /* マウスカーソルをポインターに変更 */
+}
+
+/* メインコンテンツフッターのスタイリング */
+.contents-footer {
+  position: absolute; /* 絶対位置指定 */
+  bottom: 0; /* 下端に配置 */
+  width: 100%; /* 幅を100%に設定 */
+}
+
+/* フッター内のフォームラップスタイル */
+.contents-footer .form-wrap {
+  display: flex; /* フレックスボックスを使用してアイテムを横並びに配置 */
+  justify-content: space-between; /* アイテムを均等に配置 */
+  padding: 10px; /* 全周のパディング */
+}
+
+/* テキスト入力フィールドのスタイル */
+.contents-footer .form-wrap input[type="text"] {
+  flex: 1; /* フレックスアイテムとしての拡張率を1に設定 */
+  padding: 10px 5px; /* 内側の余白を上下に10px、左右に5pxに設定 */
+}
+/* 送信ボタンのスタイル */
+.contents-footer .form-wrap input[type="submit"] {
+  width: 50px; /* 送信ボタンの幅を50pxに設定 */
+}
+
+.preview {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+.preview img {
+  max-width: 120px;
+  max-height: 120px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  background-color: white;
+}
+
+.preview .remove {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background: #000;
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/*ドロップダウン*/
+.dropdown-menu-btn {
+  cursor: pointer;
+  font-size: 18px;
+  margin-left: 10px;
+  color: #666;
+  user-select: none;
+  padding: 2px 5px;
+  border-radius: 3px;
+  transition: background-color 0.2s;
+  position:relative;
+  display: inline-block;
+}
+
+.dropdown-menu-btn:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+/* ドロップダウンメニューコンテンツ */
+.dropdown-menu-content {
+  position: fixed;
+  background-color: white;
+  min-width: 120px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  border-radius: 4px;
+  z-index: 1000;
+  margin-top: 5px;
+  border: 1px solid #ddd;
+}
+
+.dropdown-menu-content .dropdown-item {
+  color: black;
+  padding: 10px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+}
+
+.dropdown-menu-content .dropdown-item:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown-menu-content .dropdown-item:first-child {
+  border-radius: 4px 4px 0 0;
+}
+
+.dropdown-menu-content .dropdown-item:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.log-box-header {
+  position: relative;
+}
+
+.log-name {
+  display: flex;
+  align-items: center;
+}
+
+.log-area {
+  position: relative;
+}
+
+.log-box {
+  position: relative;
+}
+
+/*絵文字のメニュー*/
+.dropdown-item.submenu {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.dropdown-item.submenu::after {
+  content: '▶';
+  position: absolute;
+  right: 10px;
+  font-size: 0.8em;
+  color: #666;
+}
+
+.dropdown-submenu-content {
+  position: absolute;
+  left: 100%;
+  top: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  min-width: 120px;
+  z-index: 1001;
+  padding: 4px 0;
+}
+
+.dropdown-submenu-content .dropdown-item {
+  padding: 8px 16px;
+  color: #333;
+  text-decoration: none;
+  display: block;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.dropdown-submenu-content .dropdown-item:hover {
+  background-color: #f0f0f0;
+}
+
+/* ▼マークを非表示 */
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+
+/* 背景や余白をアイコンに合わせて調整 */
+.btn.dropdown-toggle {
+  background: transparent; /* 背景透明 */
+  border: none;            /* ボーダー無し */
+  padding: 0;              /* パディングを消す */
+  width: 25px;             /* アイコン幅に合わせる */
+  height: 25px;            /* アイコン高さに合わせる */
+}
+
+/* img を中央表示 */
+.btn.dropdown-toggle img {
+  display: block;
+  width: 25px;
+  height: 25px;
+}
+/* サブメニューの初期状態を非表示に */
+.dropdown-submenu > .dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%; /* 親の右側に表示 */
+  margin-top: 0;
+}
+
+/* マウスオーバーまたはクリックで表示 */
+.dropdown-submenu.show > .dropdown-menu {
+  display: block;
+}
+
+/* プロフィール画像ドロップダウンの三角を消す */
+.profile-dropdown.dropdown-toggle::after {
+  display: none !important;
+}
+
+/* ドロワーオーバーレイ*/
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 9998;
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.drawer-overlay.show {
+  display: block;
+  opacity: 1;
+}
+
+/* ドロワーメニュー*/
+.drawer-menu {
+  position: fixed;
+  top: 0;
+  right: -400px;
+  width: 400px;
+  height: 100%;
+  background-color: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  transition: right 0.3s ease;
+  overflow-y: auto;
+}
+
+.drawer-menu.show {
+  right: 0; /* 表示時：画面内に*/
+}
+
+/* ドロワーヘッダー*/
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  background-color: #f8f9fa;
+}
+
+.drawer-header h3 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.drawer-close-btn {
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 1;
+}
+
+.drawer-close-btn:hover {
+  color: #333;
+}
+
+/* ドロワーコンテンツ*/
+.drawer-content {
+  padding: 20px;
+}
+
+/* プロフィール情報*/
+#changeImg{
+  background-color: purple;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-weight: bold;
+}
+
+#changeImg:hover{
+  opacity: 0.7;
+}
+
+.profile-info-section {
+  margin-top: 20px;
+}
+
+.profile-field {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.profile-field label {
+  display: block;
+  font-weight: bold;
+  color: #666;
+  margin-bottom: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.profile-value {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.profile-value span {
+  font-size: 16px;
+  color: #333;
+}
+
+.profile-field .btn-link {
+  padding: 0;
+  text-decoration: none;
+  color: #008952;
+}
+
+.profile-field .btn-link:hover {
+  text-decoration: underline;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 768px) {
+  .drawer-menu {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+/*ローディング*/
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.loading-content {
+  text-align: center;
+  font-size: 1.2em;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid #ccc;
+  border-top-color: #008952;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 10px auto;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Slackっぽいらしい  */
+
+.slack-modal {
+  border-radius: 12px;
+  border: none;
+  background-color: #f8f9fa;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.slack-header {
+  border-bottom: 1px solid #e0e0e0;
+  padding: 20px;
+}
+
+.slack-header .modal-title {
+  font-weight: 700;
+  font-size: 18px;
+  color: #1d1c1d;
+}
+
+.slack-close {
+  opacity: 0.7;
+}
+
+.slack-close:hover {
+  opacity: 1;
+}
+
+.slack-body {
+  padding: 20px 24px;
+}
+
+.slack-footer {
+  border-top: 1px solid #e0e0e0;
+  padding: 16px 24px;
+}
+
+.slack-table-head th {
+  background-color: #f1f2f4;
+  font-weight: 600;
+  border-bottom: 2px solid #ddd;
+}
+
+.slack-btn-secondary {
+  background-color: #ececec;
+  color: #1d1c1d;
+  border: 1px solid #d1d1d1;
+  border-radius: 6px;
+  padding: 6px 14px;
+}
+
+.slack-btn-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+/* チップ入力コンテナ*/
+#chipInputContainer {
+  min-height: 45px;
+  cursor: text;
+  padding: 4px 8px;
+  gap: 6px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  background-color: #fff;
+}
+
+#chipInputContainer:focus-within {
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* チップスタイル*/
+.chip {
+  background: #0d6efd;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.chip .chip-avatar {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  object-fit: cover;
+}
+
+.chip span {
+  margin-left: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 0 4px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.chip span:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* プレースホルダー */
+#chipPlaceholder {
+  color: #6c757d;
+  font-size: 14px;
+  user-select: none;
+}
+
+/* 検索ボックス */
+#userSearchBox {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  width: 100%;
+  font-size: 14px;
+}
+
+#userSearchBox:focus {
+  outline: none;
+  border-color: #86b7fe;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+/* ユーザーリストのスタイル */
+#userList {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  background-color: #fff;
+  margin-top: 10px;
+  padding: 8px;
+}
+
+/* ユーザーアイテム */
+.user-item {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  margin-bottom: 4px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.user-item:hover {
+  background-color: #f8f9fa;
+  border-color: #dee2e6;
+  transform: translateX(4px);
+}
+
+.user-item.selected {
+  background-color: #cfe2ff;
+  border-color: #0d6efd;
+}
+
+/* ユーザーアバター */
+.user-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 12px;
+  border: 2px solid #dee2e6;
+}
+
+.user-item.selected .user-avatar {
+  border-color: #0d6efd;
+}
+
+/* ユーザー情報 */
+.user-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-weight: 500;
+  color: #212529;
+  font-size: 15px;
+  margin-bottom: 2px;
+}
+
+.user-email {
+  font-size: 13px;
+  color: #6c757d;
+}
+
+/* 選択インジケーター */
+.user-check {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #dee2e6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.user-item.selected .user-check {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.user-check::after {
+  content: '✓';
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  display: none;
+}
+
+.user-item.selected .user-check::after {
+  display: block;
+}
+
+/* 空の状態 */
+.user-list-empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6c757d;
+}
+
+/* スクロールバーのカスタマイズ */
+#userList::-webkit-scrollbar {
+  width: 8px;
+}
+
+#userList::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+#userList::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+#userList::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/*未読メッセージのスタイル*/
+.unread-badge {
+  display: inline-block;
+  background-color: #dc3545;  /* Bootstrap の赤色 */
+  color: white;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 10px;        /* 丸みを帯びた形 */
+  margin-left: 8px;
+  min-width: 20px;
+  text-align: center;
+  line-height: 1.2;
+  vertical-align: middle;
+}
+
+.list-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+}
+
+.list-item .unread-badge {
+  flex-shrink: 0;           /* 縮まないように固定 */
+  margin-left: auto;        /* 右端に配置 */
+  margin-right: 5px;
+}
