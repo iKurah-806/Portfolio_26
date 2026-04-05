@@ -6,7 +6,7 @@
 授業の一環での開発のためデプロイは行っていないですが、ユーザー同士がコミュニケーションを取ることを想定としたWebアプリケーションです。
 
 
-https://github.com/user-attachments/assets/aa291ecd-53e8-45ec-8c7a-9b7d5e376cef
+<video src="https://github.com/user-attachments/assets/aa291ecd-53e8-45ec-8c7a-9b7d5e376cef" autoplay loop muted playsinline width="100%"></video>
 
 
 
